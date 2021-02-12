@@ -32,7 +32,6 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        assertEquals(3, test_job_3.getId());
         assertEquals("Product tester", test_job_3.getName());
         assertEquals("ACME", test_job_3.getEmployer().getValue());
         assertEquals("Desert", test_job_3.getLocation().getValue());
@@ -43,6 +42,24 @@ public class JobTest {
     @Test
     public void testJobsForEquality() {
         assertFalse(test_job_3.getId() == test_job_4.getId());
+    }
+
+    @Test
+    public void toStringLabels() {
+        assertEquals('\n', test_job_1.toString().charAt(0));
+        assertEquals('\n', test_job_1.toString().charAt(test_job_1.toString().length()-1));
+    }
+
+    @Test
+    public void toStringValues() {
+        assertEquals("\n" +
+                "ID: " + test_job_3.getId() +
+                "\nName: " + test_job_3.getName() +
+                "\nEmployer " + test_job_3.getEmployer().getValue() +
+                "\nLocation " + test_job_3.getLocation().getValue() +
+                "\nPosition Type" + test_job_3.getPositionType().getValue() +
+                "\nCore Competency " + test_job_3.getCoreCompetency().getValue() + "\n", test_job_3.toString());
+
     }
 
 }
